@@ -1,6 +1,8 @@
 package com.github.catvod.spider;
 
 import io.github.pixee.security.BoundedLineReader;
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 import static java.lang.System.in;
 import static java.lang.System.out;
 
@@ -140,12 +142,12 @@ public class Notice extends Spider {
         BufferedReader in = null;
         StringBuilder result = new StringBuilder();
         try {
-            URL url = new URL(siteurl);
+            URL url = Urls.create(siteurl, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS);
             HttpURLConnection httpconn;
             HttpsURLConnection httpsconn;
             httpsconn = (HttpsURLConnection) url.openConnection();
 
-            if (url.getProtocol().toLowerCase().equals("https")) {
+            if ("https".equals(url.getProtocol().toLowerCase())) {
                 httpsconn.setHostnameVerifier(DO_NOT_VERIFY);
                 httpconn = httpsconn;
             } else {	//判断是https请求还是http请求
