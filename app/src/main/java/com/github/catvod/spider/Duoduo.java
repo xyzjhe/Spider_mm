@@ -26,9 +26,9 @@ import java.util.regex.Pattern;
 /**
  * @author zhixc
  */
-public class Wwgg extends Ali {
+public class Duoduo extends Ali {
 
-    private final String siteUrl = "http://www.kxys.site:3328";
+    private final String siteUrl = "https://tv.yydsys.top/";
     private final Pattern regexCategory = Pattern.compile("/vod/type/id/(\\w+).html");
     private final Pattern regexPageTotal = Pattern.compile("\\$\\(\"\\.mac_total\"\\)\\.text\\('(\\d+)'\\);");
 
